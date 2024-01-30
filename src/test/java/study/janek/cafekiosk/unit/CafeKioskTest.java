@@ -1,5 +1,6 @@
 package study.janek.cafekiosk.unit;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.janek.cafekiosk.unit.beverages.Americano;
 import study.janek.cafekiosk.unit.beverages.Latte;
@@ -22,6 +23,7 @@ class CafeKioskTest {
     }
 
     @Test
+    @DisplayName("음료 한 개를 추가하면 주문 목록에 담긴다.")
     void add() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         cafeKiosk.add(new Americano());
@@ -31,6 +33,7 @@ class CafeKioskTest {
     }
 
     @Test
+    @DisplayName("음료 여러 개 추가하면 주문 목록에 담긴다.")
     void addSeveralBeverages() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
@@ -44,6 +47,7 @@ class CafeKioskTest {
     }
 
     @Test
+    @DisplayName("음료 주문시 수량을 0으로 입력하면 주문을 생성할 수 없다.")
     void addZeroBeverages() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
@@ -54,6 +58,7 @@ class CafeKioskTest {
     }
 
     @Test
+    @DisplayName("주문 내역 삭제시 목록에서 삭제된다.")
     void remove() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
@@ -66,6 +71,7 @@ class CafeKioskTest {
     }
 
     @Test
+    @DisplayName("장바구니 비우기 동작시 모든 주문 목록이 사라진다.")
     void clear() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
@@ -80,7 +86,9 @@ class CafeKioskTest {
     }
 
     @Test
+    @DisplayName("주문 목록에 담긴 음료의 총 금액이 반환된다.")
     void calculateTotalPrice() {
+        // given
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
         Latte latte = new Latte();
@@ -88,8 +96,10 @@ class CafeKioskTest {
         cafeKiosk.add(americano);
         cafeKiosk.add(latte);
 
+        // when
         int totalPrice = cafeKiosk.calculateTotalPrice();
 
+        // then
         assertThat(totalPrice).isEqualTo(americano.getPrice() + latte.getPrice());
     }
 
