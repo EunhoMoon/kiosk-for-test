@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CafeKioskTest {
 
     @Test
+    @DisplayName("수동 테스트, 생성 내역 정상 출력.")
     void add_manual_test() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         cafeKiosk.add(new Americano());
@@ -104,6 +105,7 @@ class CafeKioskTest {
     }
 
     @Test
+    @DisplayName("영업 시간 내에 주문하면 정상 주문된다.")
     void createOrderWithOperatingHours() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
@@ -115,6 +117,7 @@ class CafeKioskTest {
     }
 
     @Test
+    @DisplayName("영업 시간을 지나 주문하면 주문을 생성할 수 없다.")
     void createOrderWithoutOperatingHours() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
