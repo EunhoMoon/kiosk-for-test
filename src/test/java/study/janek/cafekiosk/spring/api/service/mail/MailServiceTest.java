@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
@@ -18,8 +19,8 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class MailServiceTest {
 
-//    @Mock
-    @Spy
+    @Mock
+//    @Spy
     MailSendClient mailSendClient;
 
     @Mock
@@ -39,9 +40,11 @@ class MailServiceTest {
 //        when(mailSendClient.sendEmail(anyString(), anyString(), anyString(), anyString()))
 //            .thenReturn(true);
         // spy 사용시 원하는 기능(sendMail)만 stubbing하고, 나머지 기능은 그대로 사용
-        doReturn(true)
-            .when(mailSendClient)
-            .sendEmail(anyString(), anyString(), anyString(), anyString());
+//        doReturn(true)
+//            .when(mailSendClient)
+//            .sendEmail(anyString(), anyString(), anyString(), anyString());
+        BDDMockito.given(mailSendClient.sendEmail(anyString(), anyString(), anyString(), anyString()))
+            .willReturn(true);
 
         // when
         boolean result = mailService.sendMail("", "", "", "");
