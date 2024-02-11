@@ -21,9 +21,10 @@ class OrderTest {
             createProduct("001", 1000),
             createProduct("002", 2000)
         );
+        LocalDateTime registeredDateTime = LocalDateTime.of(2024, 2, 7, 21, 0, 0);
 
         // when
-        Order order = Order.create(products, LocalDateTime.now());
+        Order order = Order.create(products, registeredDateTime);
 
         // then
         assertThat(order.getTotalPrice())
@@ -51,7 +52,7 @@ class OrderTest {
     @DisplayName("주문 생성 시 등록 시간을 기록한다.")
     void registeredDateTime() {
         //given
-        LocalDateTime registeredDateTime = LocalDateTime.now();
+        LocalDateTime registeredDateTime = LocalDateTime.of(2024, 2, 7, 21, 0, 0);
         List<Product> products = List.of(
             createProduct("001", 1000),
             createProduct("002", 2000)
