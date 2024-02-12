@@ -3,9 +3,8 @@ package study.janek.cafekiosk.spring.api.service.product;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
+import study.janek.cafekiosk.spring.IntegrationTestSupport;
 import study.janek.cafekiosk.spring.api.service.product.request.ProductCreateServiceRequest;
 import study.janek.cafekiosk.spring.api.service.product.response.ProductResponse;
 import study.janek.cafekiosk.spring.domain.product.Product;
@@ -20,10 +19,8 @@ import static org.assertj.core.api.Assertions.tuple;
 import static study.janek.cafekiosk.spring.domain.product.ProductSellingStatus.SELLING;
 import static study.janek.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
-@ActiveProfiles("test")
 @Transactional
-@SpringBootTest
-class ProductServiceTest {
+class ProductServiceTest extends IntegrationTestSupport {
 
     @Autowired
     ProductService productService;

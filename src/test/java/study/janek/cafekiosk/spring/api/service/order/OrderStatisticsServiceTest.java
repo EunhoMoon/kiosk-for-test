@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
+import study.janek.cafekiosk.spring.IntegrationTestSupport;
 import study.janek.cafekiosk.spring.client.mail.MailSendClient;
 import study.janek.cafekiosk.spring.domain.history.mail.MailSendHistory;
 import study.janek.cafekiosk.spring.domain.history.mail.MailSendHistoryRepository;
@@ -28,9 +29,7 @@ import static study.janek.cafekiosk.spring.domain.product.ProductSellingStatus.S
 import static study.janek.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
 @Transactional
-@SpringBootTest
-@ActiveProfiles("test")
-class OrderStatisticsServiceTest {
+class OrderStatisticsServiceTest extends IntegrationTestSupport {
 
     @Autowired
     OrderStatisticsService orderStatisticsService;
@@ -43,9 +42,9 @@ class OrderStatisticsServiceTest {
 
     @Autowired
     MailSendHistoryRepository mailSendHistoryRepository;
-
-    @MockBean
-    MailSendClient mailSendClient;
+//
+//    @MockBean
+//    MailSendClient mailSendClient;
 
     @Test
     @DisplayName("결제 완료 주문에 대한 매출 통계 메일을 전송한다.")
